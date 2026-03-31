@@ -1,0 +1,72 @@
+name: karma
+options:
+  bundleIdPrefix: com.yourapp
+  deploymentTarget:
+    macOS: "13.0"
+  xcodeVersion: "15.0"
+
+packages:
+  AppAuth:
+    url: https://github.com/openid/AppAuth-iOS
+    from: "1.7.0"
+
+targets:
+  karma:
+    type: application
+    platform: macOS
+    sources:
+      - karma
+    info:
+      path: karma/Info.plist
+      properties:
+        LSUIElement: true                          # hide from Dock + app switcher
+        CFBundleURLTypes:
+          - CFBundleTypeRole: Editor
+            CFBundleURLSchemes:
+              - com.yourapp.karma                  # OAuth redirect URI
+    entitlements:
+      path: karma/karma.entitlements
+      properties:
+        com.apple.security.network.client: true
+        com.apple.security.automation.apple-events: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.yourapp.karma
+        SWIFT_VERSION: "5.9"
+        MACOSX_DEPLOYMENT_TARGET: "13.0"
+        ENABLE_HARDENED_RUNTIME: YES
+        CODE_SIGN_STYLE: Automatic
+    dependencies:
+      - package: AppAuth
+        product: AppAuth
+    scheme:
+      testTargets:
+        - karmaTests
+
+  karmaTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - karmaTests
+    settings:
+      base:
+        SWIFT_VERSION: "5.9"
+        MACOSX_DEPLOYMENT_TARGET: "13.0"
+        BUNDLE_LOADER: $(TEST_HOST)
+        TEST_HOST: $(BUILT_PRODUCTS_DIR)/karma.app/Contents/MacOS/karma
+    dependencies:
+      - target: karma
+      - package: AppAuth
+        product: AppAuth
+
+schemes:
+  karma:
+    build:
+      targets:
+        karma: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - karmaTests

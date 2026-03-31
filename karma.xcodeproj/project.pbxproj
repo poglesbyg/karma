@@ -1,0 +1,490 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		051E1E85649AE8AF7926AEAB /* StatusBarControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5473DA2F9C3CEE990AF5A37D /* StatusBarControllerTests.swift */; };
+		0FCC4EE712C13120275431A4 /* SchedulerServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC74816810EC096E48B6A9E /* SchedulerServiceTests.swift */; };
+		12CD1E84905C653670F9756F /* SchedulerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5D72A8D319D2C1377EE763 /* SchedulerService.swift */; };
+		5E1731623B4B904D713669C0 /* DigestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED985DBA787EAC6E15D6BE /* DigestView.swift */; };
+		6A01127913990CAEDA4C082D /* EmailFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02484AE96530A50122432EAE /* EmailFetcher.swift */; };
+		80F11D5AECD8E1DF66EC86B8 /* DigestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD8B25DD4AB75405DB54DFB /* DigestBuilderTests.swift */; };
+		8C57990A78EC120202DEBAF0 /* karmaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB0255247105F4499E2857 /* karmaApp.swift */; };
+		8D149F86FEE99A348340EF63 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740336B1B6A717CC8C4E45F5 /* StatusBarController.swift */; };
+		9DD7C4F8F817C2F5791A66ED /* DigestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082EA6933240DB3243003F60 /* DigestBuilder.swift */; };
+		A6860A929CCFE6D947172B82 /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5106F503C7B3B1014915A00F /* PermissionManager.swift */; };
+		E0316A52BCD94B1AD7CCB8E3 /* MessageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8303916914C360B1F58D50E /* MessageFetcher.swift */; };
+		EF5D914CB7762DCCAAB8E436 /* MessageFetcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C669889182F6170FCCCCDAF3 /* MessageFetcherTests.swift */; };
+		F3CCA59A4E92B20BD1AF833E /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 560A701DE3737F878D0193DA /* AppAuth */; };
+		F45EF5D160F861107336C84F /* AppAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FB84178468728292113101F1 /* AppAuth */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5D480468204919102945AE09 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7C0B9C7ED2291E9864E7E3E8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2417576A1570D64BB9BCA5B4;
+			remoteInfo = karma;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02484AE96530A50122432EAE /* EmailFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailFetcher.swift; sourceTree = "<group>"; };
+		082EA6933240DB3243003F60 /* DigestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigestBuilder.swift; sourceTree = "<group>"; };
+		0AED985DBA787EAC6E15D6BE /* DigestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigestView.swift; sourceTree = "<group>"; };
+		17CB0255247105F4499E2857 /* karmaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = karmaApp.swift; sourceTree = "<group>"; };
+		1FB1F98D8A2A371F231C9F7A /* karmaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = karmaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FC74816810EC096E48B6A9E /* SchedulerServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerServiceTests.swift; sourceTree = "<group>"; };
+		5106F503C7B3B1014915A00F /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionManager.swift; sourceTree = "<group>"; };
+		51795D31D4819141B9FDF1DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5473DA2F9C3CEE990AF5A37D /* StatusBarControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarControllerTests.swift; sourceTree = "<group>"; };
+		740336B1B6A717CC8C4E45F5 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
+		7E5D72A8D319D2C1377EE763 /* SchedulerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerService.swift; sourceTree = "<group>"; };
+		C669889182F6170FCCCCDAF3 /* MessageFetcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFetcherTests.swift; sourceTree = "<group>"; };
+		CD2047548106E0935C71E7BE /* karma.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = karma.entitlements; sourceTree = "<group>"; };
+		CD3E3817AF4DF722BDEA3274 /* karma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = karma.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8303916914C360B1F58D50E /* MessageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFetcher.swift; sourceTree = "<group>"; };
+		FDD8B25DD4AB75405DB54DFB /* DigestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigestBuilderTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		251ACE01D244768E3EEA58EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F45EF5D160F861107336C84F /* AppAuth in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C52A18616BEC25931BC0731 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3CCA59A4E92B20BD1AF833E /* AppAuth in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA118711A5704D99A01A58F6 /* karmaTests */ = {
+			isa = PBXGroup;
+			children = (
+				FDD8B25DD4AB75405DB54DFB /* DigestBuilderTests.swift */,
+				C669889182F6170FCCCCDAF3 /* MessageFetcherTests.swift */,
+				4FC74816810EC096E48B6A9E /* SchedulerServiceTests.swift */,
+				5473DA2F9C3CEE990AF5A37D /* StatusBarControllerTests.swift */,
+			);
+			path = karmaTests;
+			sourceTree = "<group>";
+		};
+		C19E6A3D05A0F530AD69DAF2 = {
+			isa = PBXGroup;
+			children = (
+				F3D1FA1C90E5C279B638C66D /* karma */,
+				AA118711A5704D99A01A58F6 /* karmaTests */,
+				E9563DF87E23F9FC33786438 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E9563DF87E23F9FC33786438 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CD3E3817AF4DF722BDEA3274 /* karma.app */,
+				1FB1F98D8A2A371F231C9F7A /* karmaTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F3D1FA1C90E5C279B638C66D /* karma */ = {
+			isa = PBXGroup;
+			children = (
+				082EA6933240DB3243003F60 /* DigestBuilder.swift */,
+				0AED985DBA787EAC6E15D6BE /* DigestView.swift */,
+				02484AE96530A50122432EAE /* EmailFetcher.swift */,
+				51795D31D4819141B9FDF1DD /* Info.plist */,
+				CD2047548106E0935C71E7BE /* karma.entitlements */,
+				17CB0255247105F4499E2857 /* karmaApp.swift */,
+				F8303916914C360B1F58D50E /* MessageFetcher.swift */,
+				5106F503C7B3B1014915A00F /* PermissionManager.swift */,
+				7E5D72A8D319D2C1377EE763 /* SchedulerService.swift */,
+				740336B1B6A717CC8C4E45F5 /* StatusBarController.swift */,
+			);
+			path = karma;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2417576A1570D64BB9BCA5B4 /* karma */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4333CCD45847D9C753295D2A /* Build configuration list for PBXNativeTarget "karma" */;
+			buildPhases = (
+				EECBC798315111487897D580 /* Sources */,
+				251ACE01D244768E3EEA58EE /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = karma;
+			packageProductDependencies = (
+				FB84178468728292113101F1 /* AppAuth */,
+			);
+			productName = karma;
+			productReference = CD3E3817AF4DF722BDEA3274 /* karma.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AD77E8266FA4387B4F9CEEAB /* karmaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42B425250541FAFFCA71EDD4 /* Build configuration list for PBXNativeTarget "karmaTests" */;
+			buildPhases = (
+				46AFE670E6FB550B4AB56803 /* Sources */,
+				5C52A18616BEC25931BC0731 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FEC261CB075CEF9842D860C7 /* PBXTargetDependency */,
+			);
+			name = karmaTests;
+			packageProductDependencies = (
+				560A701DE3737F878D0193DA /* AppAuth */,
+			);
+			productName = karmaTests;
+			productReference = 1FB1F98D8A2A371F231C9F7A /* karmaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7C0B9C7ED2291E9864E7E3E8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					2417576A1570D64BB9BCA5B4 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 400DE2EC98BD9B62278DD2DD /* Build configuration list for PBXProject "karma" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = C19E6A3D05A0F530AD69DAF2;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				D34156B2A7801F4F7A570582 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = E9563DF87E23F9FC33786438 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2417576A1570D64BB9BCA5B4 /* karma */,
+				AD77E8266FA4387B4F9CEEAB /* karmaTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		46AFE670E6FB550B4AB56803 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80F11D5AECD8E1DF66EC86B8 /* DigestBuilderTests.swift in Sources */,
+				EF5D914CB7762DCCAAB8E436 /* MessageFetcherTests.swift in Sources */,
+				0FCC4EE712C13120275431A4 /* SchedulerServiceTests.swift in Sources */,
+				051E1E85649AE8AF7926AEAB /* StatusBarControllerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EECBC798315111487897D580 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DD7C4F8F817C2F5791A66ED /* DigestBuilder.swift in Sources */,
+				5E1731623B4B904D713669C0 /* DigestView.swift in Sources */,
+				6A01127913990CAEDA4C082D /* EmailFetcher.swift in Sources */,
+				E0316A52BCD94B1AD7CCB8E3 /* MessageFetcher.swift in Sources */,
+				A6860A929CCFE6D947172B82 /* PermissionManager.swift in Sources */,
+				12CD1E84905C653670F9756F /* SchedulerService.swift in Sources */,
+				8D149F86FEE99A348340EF63 /* StatusBarController.swift in Sources */,
+				8C57990A78EC120202DEBAF0 /* karmaApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FEC261CB075CEF9842D860C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2417576A1570D64BB9BCA5B4 /* karma */;
+			targetProxy = 5D480468204919102945AE09 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		11D13478DE67E72F105DBEB5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourapp.karmaTests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/karma.app/Contents/MacOS/karma";
+			};
+			name = Debug;
+		};
+		44DCE5B5D9BAD845D32D48F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = karma/karma.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = karma/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourapp.karma;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		87416030EFD3F3A2D8EE4DCB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = karma/karma.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = karma/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourapp.karma;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		8B3DC1B4EB5C183DBC099FBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		BC7D8F1A7BB9B5D1B2AA236A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourapp.karmaTests;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/karma.app/Contents/MacOS/karma";
+			};
+			name = Release;
+		};
+		EC6378E5869765A2438E7246 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		400DE2EC98BD9B62278DD2DD /* Build configuration list for PBXProject "karma" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC6378E5869765A2438E7246 /* Debug */,
+				8B3DC1B4EB5C183DBC099FBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		42B425250541FAFFCA71EDD4 /* Build configuration list for PBXNativeTarget "karmaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				11D13478DE67E72F105DBEB5 /* Debug */,
+				BC7D8F1A7BB9B5D1B2AA236A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		4333CCD45847D9C753295D2A /* Build configuration list for PBXNativeTarget "karma" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87416030EFD3F3A2D8EE4DCB /* Debug */,
+				44DCE5B5D9BAD845D32D48F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D34156B2A7801F4F7A570582 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/openid/AppAuth-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		560A701DE3737F878D0193DA /* AppAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D34156B2A7801F4F7A570582 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
+			productName = AppAuth;
+		};
+		FB84178468728292113101F1 /* AppAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D34156B2A7801F4F7A570582 /* XCRemoteSwiftPackageReference "AppAuth-iOS" */;
+			productName = AppAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 7C0B9C7ED2291E9864E7E3E8 /* Project object */;
+}

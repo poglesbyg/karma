@@ -1,0 +1,20 @@
+# Xcode
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+*.xcworkspace/xcuserdata/
+*.xcworkspace/xcshareddata/swiftpm/
+DerivedData/
+build/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# SPM resolved file (commit Package.resolved for reproducible builds)
+# .package.resolved
+
+# macOS
+.DS_Store
+
+# Secrets (NEVER commit these)
+*.p12
+*.mobileprovision
