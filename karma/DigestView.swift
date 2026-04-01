@@ -63,6 +63,12 @@ struct DigestView: View {
                 .onSubmit { signIn() }
             Button("Sign in with Google") { signIn() }
                 .disabled(emailInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            if case .error(let msg) = controller.fetchState {
+                Text(msg)
+                    .foregroundColor(.red)
+                    .font(.system(.caption, design: .monospaced))
+                    .fixedSize(horizontal: false, vertical: true)
+            }
         }
         .padding(12)
     }

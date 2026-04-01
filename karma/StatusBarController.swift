@@ -177,6 +177,10 @@ class StatusBarController: ObservableObject {
     // MARK: OAuth flow
 
     func startOAuthFlow(loginHint: String = "") {
+        // Capture the popover window NOW (synchronously) — ASWebAuthenticationSession
+        // requires a valid NSWindow anchor. After any await, the popover may no longer
+        // be the key window.
+        let presentingWindow = NSApp.keyWindow
         Task { @MainActor in
             do {
                 let config = try await discoverGoogleConfig()
@@ -189,7 +193,8 @@ class StatusBarController: ObservableObject {
                     responseType: OIDResponseTypeCode,
                     additionalParameters: hint.isEmpty ? nil : ["login_hint": hint]
                 )
-                let agent = OIDExternalUserAgentMac()
+                let agent = presentingWindow.map { OIDExternalUserAgentMac(presenting: $0) }
+                    ?? OIDExternalUserAgentMac()
                 let appDelegate = NSApp.delegate as? AppDelegate
                 let newAuthState: OIDAuthState = try await withCheckedThrowingContinuation { cont in
                     appDelegate?.currentAuthorizationFlow = OIDAuthState.authState(
@@ -207,7 +212,8 @@ class StatusBarController: ObservableObject {
                 KeychainHelper.save(newAuthState)
                 triggerFetch()
             } catch {
-                fetchState = .error("Gmail connection failed — try again")
+                print("[karma] OAuth error: \(error)")
+                fetchState = .error("Gmail connection failed: \(error.localizedDescription)")
             }
         }
     }
