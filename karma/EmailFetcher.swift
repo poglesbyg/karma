@@ -3,7 +3,7 @@ import Foundation
 // MARK: - Gmail configuration
 
 enum GmailConfig {
-    // Redirect URI is fixed — matches CFBundleURLSchemes in Info.plist
+    static let clientID = "1029267595598-jloelo7q4o5reevrp151ou1otd3r9c25.apps.googleusercontent.com"
     static let redirectURI = "com.yourapp.karma:/oauth2callback"
 }
 

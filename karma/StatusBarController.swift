@@ -59,10 +59,8 @@ class StatusBarController: ObservableObject {
     @Published var lastDigest: DigestResult?
     @Published var fetchState: FetchState = .idle
     @Published var authState: OIDAuthState?
-    @Published var clientID: String?
 
     private let lastCheckedKey = "karma.lastChecked"
-    private let clientIDKey = "karma.clientID"
 
     private let digestBuilder: DigestBuilder
     private lazy var scheduler: SchedulerService = SchedulerService { [weak self] in
@@ -110,7 +108,6 @@ class StatusBarController: ObservableObject {
             emailFetcher: emailFetcher,
             messageFetcher: messageFetcher
         )
-        self.clientID = UserDefaults.standard.string(forKey: "karma.clientID")
         self.authState = KeychainHelper.load()
         // Kick off scheduler + initial fetch after init
         Task { @MainActor [weak self] in
@@ -170,20 +167,6 @@ class StatusBarController: ObservableObject {
         }
     }
 
-    // MARK: Configuration
-
-    func saveClientID(_ id: String) {
-        let trimmed = id.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else { return }
-        clientID = trimmed
-        UserDefaults.standard.set(trimmed, forKey: clientIDKey)
-    }
-
-    func clearClientID() {
-        clientID = nil
-        UserDefaults.standard.removeObject(forKey: clientIDKey)
-    }
-
     func disconnect() {
         authState = nil
         KeychainHelper.delete()
@@ -194,14 +177,13 @@ class StatusBarController: ObservableObject {
     // MARK: OAuth flow
 
     func startOAuthFlow(loginHint: String = "") {
-        guard let clientID else { return }
         Task { @MainActor in
             do {
                 let config = try await discoverGoogleConfig()
                 let hint = loginHint.trimmingCharacters(in: .whitespacesAndNewlines)
                 let request = OIDAuthorizationRequest(
                     configuration: config,
-                    clientId: clientID,
+                    clientId: GmailConfig.clientID,
                     scopes: ["https://www.googleapis.com/auth/gmail.metadata"],
                     redirectURL: URL(string: GmailConfig.redirectURI)!,
                     responseType: OIDResponseTypeCode,
