@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>karma — one brief, less noise</title>
+<meta name="description" content="A macOS menu bar app that replaces 40 ambient email checks with one intentional 15-second digest.">
+<meta property="og:title" content="karma">
+<meta property="og:description" content="One brief. Less noise. A macOS menu bar app.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:      #f5f3ef;
+  --surface: #ffffff;
+  --text:    #1a1816;
+  --muted:   #767270;
+  --border:  #e8e5e0;
+  --font:    'DM Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 32px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 10;
+}
+
+.nav-logo {
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.03em;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+
+.nav-links a:hover { color: var(--text); }
+
+/* ── HERO ── */
+
+.hero {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 96px 32px 80px;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+.hero-headline {
+  font-size: clamp(32px, 5.5vw, 52px);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  margin-bottom: 12px;
+}
+
+.hero-headline-sub {
+  font-size: clamp(28px, 5vw, 46px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+.hero-body {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--muted);
+  max-width: 520px;
+  margin-bottom: 48px;
+}
+
+.hero-cta {
+  font-family: var(--font);
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  color: var(--text);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--border);
+}
+
+.hero-cta:hover { text-decoration-color: var(--text); }
+
+/* ── APP MOCKUP ── */
+
+.mockup-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 64px 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.mockup-label {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.app-window {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  max-width: 300px;
+}
+
+.app-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px 9px;
+  border-bottom: 1px solid var(--border);
+}
+
+.app-title {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+.app-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.app-refresh {
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.app-section { padding: 12px 14px 10px; }
+
+.app-section-head {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.app-row {
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 3px;
+}
+
+.app-row:last-child { margin-bottom: 0; }
+
+.app-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+.app-footer {
+  padding: 7px 14px;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  border-top: 1px solid var(--border);
+}
+
+/* ── HOW IT WORKS ── */
+
+.how {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 64px 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-label {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+}
+
+.step {
+  padding: 28px 24px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.step:nth-child(2n) { border-right: none; }
+.step:nth-last-child(-n+2) { border-bottom: none; }
+
+.step-num {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.10em;
+  margin-bottom: 12px;
+}
+
+.step-head {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.step-body {
+  font-size: 12px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+/* ── PHILOSOPHY ── */
+
+.philosophy {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 64px 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.pullquote {
+  font-size: clamp(18px, 3vw, 26px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 24px;
+  max-width: 560px;
+}
+
+.pullquote-attr {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+/* ── FEATURES ── */
+
+.features {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 64px 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+}
+
+.feature {
+  padding: 24px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.feature:nth-child(2n) { border-right: none; }
+.feature:nth-last-child(-n+2) { border-bottom: none; }
+
+.feature-tag {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.feature-text {
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+/* ── DOWNLOAD ── */
+
+.download {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 80px 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.download-head {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.download-sub {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 36px;
+  max-width: 460px;
+}
+
+.download-btn {
+  font-family: var(--font);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  background: var(--text);
+  color: var(--bg);
+  border: 1px solid var(--text);
+  padding: 12px 28px;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  margin-bottom: 12px;
+}
+
+.download-btn:hover { opacity: 0.85; }
+
+.download-note {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  margin-top: 12px;
+}
+
+.download-reqs {
+  display: flex;
+  gap: 24px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.req {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.req strong {
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* ── FOOTER ── */
+
+footer {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 32px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-left {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 11px;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+
+.footer-links a:hover { color: var(--text); }
+
+/* ── RESPONSIVE ── */
+
+@media (max-width: 480px) {
+  nav { padding: 16px 20px; }
+  .hero, .mockup-wrap, .how, .philosophy, .features, .download { padding-left: 20px; padding-right: 20px; }
+  .steps, .features-grid { grid-template-columns: 1fr; }
+  .step:nth-child(2n) { border-right: 1px solid var(--border); }
+  .step:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+  .step:last-child { border-bottom: none; }
+  .feature:nth-child(2n) { border-right: 1px solid var(--border); }
+  .feature:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+  .feature:last-child { border-bottom: none; }
+  footer { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">karma</a>
+  <ul class="nav-links">
+    <li><a href="#how">how it works</a></li>
+    <li><a href="https://github.com/poglesbyg/karma" target="_blank" rel="noopener">source</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">macOS menu bar — free &amp; open source</p>
+  <h1 class="hero-headline">One brief.</h1>
+  <p class="hero-headline-sub">Forty fewer checks.</p>
+  <p class="hero-body">
+    karma replaces the compulsive loop of checking email and messages
+    with one intentional 15-second digest. It runs in your menu bar,
+    invisible until you want it. No notifications. No badges. No feed.
+  </p>
+  <a href="#download" class="hero-cta">download for macOS →</a>
+</section>
+
+<!-- APP MOCKUP -->
+<section class="mockup-wrap">
+  <p class="mockup-label">what you see when you click</p>
+  <div class="app-window">
+    <div class="app-titlebar">
+      <span class="app-title">KARMA</span>
+      <div class="app-meta">
+        <span>9:41 am</span>
+        <span class="app-refresh">↻</span>
+      </div>
+    </div>
+    <div class="app-section">
+      <div class="app-section-head">EMAIL (3)</div>
+      <div class="app-row">· alice: "re: Q2 — looks good to me"</div>
+      <div class="app-row">· GitHub: "PR #47 merged"</div>
+      <div class="app-row">· Stripe: "Invoice paid — $240"</div>
+    </div>
+    <hr class="app-divider">
+    <div class="app-section">
+      <div class="app-section-head">MESSAGES (2)</div>
+      <div class="app-row">· +1 415: "dinner tonight?"</div>
+      <div class="app-row">· Sarah: "sent the doc over"</div>
+    </div>
+    <div class="app-footer">Next check in 87 min</div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <p class="section-label">how it works</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-head">Sign in with Google</div>
+      <div class="step-body">One-time OAuth flow. karma reads Gmail metadata only — sender, subject, date. It never reads your message bodies.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-head">Grant Full Disk Access</div>
+      <div class="step-body">For iMessage, karma reads your local chat.db directly. Requires Full Disk Access in System Settings. Nothing leaves your Mac.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-head">It runs quietly</div>
+      <div class="step-body">karma fetches every 90 minutes in the background and on wake. No notifications. The menu bar title shows counts when there's something new.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-head">Click when you're ready</div>
+      <div class="step-body">Open the popover deliberately. Read your brief. Close it. That's the whole interaction — designed to take 15 seconds, not 15 minutes.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy">
+  <p class="section-label">the idea</p>
+  <p class="pullquote">
+    "Information satiety, not information resistance.<br>
+    The goal isn't to block the world — it's to meet it<br>
+    on your own schedule."
+  </p>
+  <p class="pullquote-attr">karma is the Light Phone for your Mac.</p>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <p class="section-label">what it does and does not do</p>
+  <div class="features-grid">
+    <div class="feature">
+      <div class="feature-tag">Gmail</div>
+      <div class="feature-text">Last 5 emails via the Gmail API. Sender and subject only — no body content, no tracking pixels.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-tag">iMessage</div>
+      <div class="feature-text">Unread messages from your local chat.db. Sender and first line. Processed entirely on device.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-tag">No notifications</div>
+      <div class="feature-text">karma never pushes information at you. The menu bar updates silently. You check it; it doesn't interrupt you.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-tag">No badges</div>
+      <div class="feature-text">No red dots. No unread counts in the Dock. No visual anxiety loops. The title shows counts or "karma." That's it.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-tag">No Dock icon</div>
+      <div class="feature-text">LSUIElement — karma is invisible in the Dock and app switcher. It exists only in the menu bar.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-tag">Open source</div>
+      <div class="feature-text">MIT licensed. Build it yourself or read exactly what it does before you trust it with your data.</div>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section class="download" id="download">
+  <p class="section-label">download</p>
+  <p class="download-head">macOS 13 Ventura or later</p>
+  <p class="download-sub">
+    karma is open source. Build it from source or download a signed release.
+    Requires a Google Cloud project for Gmail OAuth — see the README for setup.
+  </p>
+  <a href="https://github.com/poglesbyg/karma/releases" class="download-btn">
+    download latest release →
+  </a>
+  <span class="download-note">or build from source: github.com/poglesbyg/karma</span>
+  <div class="download-reqs">
+    <span class="req"><strong>macOS</strong> 13.0+</span>
+    <span class="req"><strong>arch</strong> Apple Silicon &amp; Intel</span>
+    <span class="req"><strong>size</strong> ~2 MB</span>
+    <span class="req"><strong>license</strong> MIT</span>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-left">karma — built with Claude Code</span>
+  <ul class="footer-links">
+    <li><a href="https://github.com/poglesbyg/karma" target="_blank" rel="noopener">github</a></li>
+    <li><a href="https://github.com/poglesbyg/karma/issues" target="_blank" rel="noopener">issues</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>
