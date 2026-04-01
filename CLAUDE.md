@@ -105,3 +105,12 @@ What is unit-testable:
 - **No ambient presence.** The app should be invisible until clicked. No periodic notifications, no badges.
 - **No metrics or streaks.** Adding any gamification or tracking defeats the purpose of the product.
 - **v1 scope is fixed.** Slack, Outlook, AI summarization, behavioral timing are explicitly deferred. See TODOS.md.
+
+## Design System
+Always read DESIGN.md before making any visual or UI decisions.
+All font choices, colors, spacing, and aesthetic direction are defined there.
+Do not deviate without explicit user approval.
+- Font: DM Mono everywhere (landing page); system monospace in SwiftUI
+- Colors: warm achromatic — #f5f3ef bg, #1a1816 text, #767270 muted, zero accent
+- Border radius: 0 everywhere
+- No color for state — use weight and position instead
