@@ -193,18 +193,19 @@ class StatusBarController: ObservableObject {
 
     // MARK: OAuth flow
 
-    func startOAuthFlow() {
+    func startOAuthFlow(loginHint: String = "") {
         guard let clientID else { return }
         Task { @MainActor in
             do {
                 let config = try await discoverGoogleConfig()
+                let hint = loginHint.trimmingCharacters(in: .whitespacesAndNewlines)
                 let request = OIDAuthorizationRequest(
                     configuration: config,
                     clientId: clientID,
                     scopes: ["https://www.googleapis.com/auth/gmail.metadata"],
                     redirectURL: URL(string: GmailConfig.redirectURI)!,
                     responseType: OIDResponseTypeCode,
-                    additionalParameters: nil
+                    additionalParameters: hint.isEmpty ? nil : ["login_hint": hint]
                 )
                 let agent = OIDExternalUserAgentMac()
                 let appDelegate = NSApp.delegate as? AppDelegate

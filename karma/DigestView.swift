@@ -4,6 +4,7 @@ import AppKit
 struct DigestView: View {
     @EnvironmentObject var controller: StatusBarController
     @State private var clientIDInput = ""
+    @State private var emailInput = ""
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -73,24 +74,26 @@ struct DigestView: View {
         .padding(12)
     }
 
-    // MARK: - Connect (Client ID set, no auth)
+    // MARK: - Sign in (Client ID set, no auth)
 
     private var connectView: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("Connect Gmail to start your digest.")
+            Text("Enter your Gmail address to sign in.")
                 .foregroundColor(.secondary)
-            Button("Connect Gmail") {
-                controller.startOAuthFlow()
-            }
-            Button("Change Client ID") {
-                clientIDInput = ""
-                controller.clearClientID()
-            }
-            .foregroundColor(.secondary)
-            .font(.system(.caption, design: .monospaced))
-            .buttonStyle(.plain)
+            TextField("you@gmail.com", text: $emailInput)
+                .textFieldStyle(.roundedBorder)
+                .font(.system(.body, design: .monospaced))
+                .onSubmit { signIn() }
+            Button("Sign in with Google") { signIn() }
+                .disabled(emailInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
         }
         .padding(12)
+    }
+
+    private func signIn() {
+        let email = emailInput.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !email.isEmpty else { return }
+        controller.startOAuthFlow(loginHint: email)
     }
 
     // MARK: - Loading (auth exists, no digest yet)
