@@ -1,30 +1,6 @@
 import XCTest
 @testable import karma
 
-// MARK: - Mocks
-
-class MockEmailFetcher: EmailFetcherProtocol {
-    var result: [EmailItem] = []
-    var error: Error? = nil
-
-    func fetch(accessToken: String, since: Double) async throws -> [EmailItem] {
-        if let error { throw error }
-        return result
-    }
-}
-
-class MockMessageFetcher: MessageFetcherProtocol {
-    var result: [MessageItem] = []
-    var error: Error? = nil
-
-    func fetch(since: Double) async throws -> [MessageItem] {
-        if let error { throw error }
-        return result
-    }
-}
-
-struct TestError: Error { let msg: String }
-
 // MARK: - Tests
 
 final class DigestBuilderTests: XCTestCase {

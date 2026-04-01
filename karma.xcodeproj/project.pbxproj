@@ -12,6 +12,7 @@
 		12CD1E84905C653670F9756F /* SchedulerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5D72A8D319D2C1377EE763 /* SchedulerService.swift */; };
 		5E1731623B4B904D713669C0 /* DigestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED985DBA787EAC6E15D6BE /* DigestView.swift */; };
 		6A01127913990CAEDA4C082D /* EmailFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02484AE96530A50122432EAE /* EmailFetcher.swift */; };
+		6ECFB32B59C7B580BB9EB558 /* TestMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B752CF519A99700BC9A95F /* TestMocks.swift */; };
 		80F11D5AECD8E1DF66EC86B8 /* DigestBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD8B25DD4AB75405DB54DFB /* DigestBuilderTests.swift */; };
 		8C57990A78EC120202DEBAF0 /* karmaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CB0255247105F4499E2857 /* karmaApp.swift */; };
 		8D149F86FEE99A348340EF63 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740336B1B6A717CC8C4E45F5 /* StatusBarController.swift */; };
@@ -39,6 +40,7 @@
 		0AED985DBA787EAC6E15D6BE /* DigestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigestView.swift; sourceTree = "<group>"; };
 		17CB0255247105F4499E2857 /* karmaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = karmaApp.swift; sourceTree = "<group>"; };
 		1FB1F98D8A2A371F231C9F7A /* karmaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = karmaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		34B752CF519A99700BC9A95F /* TestMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMocks.swift; sourceTree = "<group>"; };
 		4FC74816810EC096E48B6A9E /* SchedulerServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerServiceTests.swift; sourceTree = "<group>"; };
 		5106F503C7B3B1014915A00F /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionManager.swift; sourceTree = "<group>"; };
 		51795D31D4819141B9FDF1DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				C669889182F6170FCCCCDAF3 /* MessageFetcherTests.swift */,
 				4FC74816810EC096E48B6A9E /* SchedulerServiceTests.swift */,
 				5473DA2F9C3CEE990AF5A37D /* StatusBarControllerTests.swift */,
+				34B752CF519A99700BC9A95F /* TestMocks.swift */,
 			);
 			path = karmaTests;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				EF5D914CB7762DCCAAB8E436 /* MessageFetcherTests.swift in Sources */,
 				0FCC4EE712C13120275431A4 /* SchedulerServiceTests.swift in Sources */,
 				051E1E85649AE8AF7926AEAB /* StatusBarControllerTests.swift in Sources */,
+				6ECFB32B59C7B580BB9EB558 /* TestMocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +244,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -354,6 +359,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",

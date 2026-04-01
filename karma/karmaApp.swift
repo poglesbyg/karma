@@ -3,9 +3,13 @@ import AppAuth
 
 // Handles OAuth redirect URL from Safari (com.yourapp.karma:/oauth2callback)
 class AppDelegate: NSObject, NSApplicationDelegate {
+    var currentAuthorizationFlow: OIDExternalUserAgentSession?
+
     func application(_ application: NSApplication, open urls: [URL]) {
         for url in urls {
-            if OIDAuthorizationService.resumeExternalUserAgentFlow(with: url) {
+            if let flow = currentAuthorizationFlow,
+               flow.resumeExternalUserAgentFlow(with: url) {
+                currentAuthorizationFlow = nil
                 return
             }
         }

@@ -148,15 +148,3 @@ final class StatusBarControllerTests: XCTestCase {
     private func m() -> MessageItem { MessageItem(sender: "+1", text: "hi", date: Date()) }
 }
 
-// Upgraded mock with closure support for specific test cases
-class MockEmailFetcher: EmailFetcherProtocol {
-    var result: [EmailItem] = []
-    var error: Error? = nil
-    var fetch: ((String, Double) throws -> [EmailItem])?
-
-    func fetch(accessToken: String, since: Double) async throws -> [EmailItem] {
-        if let closure = fetch { return try closure(accessToken, since) }
-        if let error { throw error }
-        return result
-    }
-}

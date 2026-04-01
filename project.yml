@@ -54,6 +54,7 @@ targets:
         MACOSX_DEPLOYMENT_TARGET: "13.0"
         BUNDLE_LOADER: $(TEST_HOST)
         TEST_HOST: $(BUILT_PRODUCTS_DIR)/karma.app/Contents/MacOS/karma
+        GENERATE_INFOPLIST_FILE: YES
     dependencies:
       - target: karma
       - package: AppAuth

@@ -62,9 +62,6 @@ class StatusBarController: ObservableObject {
 
     private let lastCheckedKey = "karma.lastChecked"
 
-    // Holds the active OAuth session to keep it alive during the flow
-    var currentAuthFlow: OIDExternalUserAgentSession?
-
     private let digestBuilder: DigestBuilder
     private lazy var scheduler: SchedulerService = SchedulerService { [weak self] in
         self?.triggerFetch()
@@ -185,9 +182,10 @@ class StatusBarController: ObservableObject {
                     additionalParameters: nil
                 )
                 let agent = OIDExternalUserAgentMac()
+                let appDelegate = NSApp.delegate as? AppDelegate
                 let newAuthState: OIDAuthState = try await withCheckedThrowingContinuation { cont in
-                    self.currentAuthFlow = OIDAuthState.authStateByPresenting(
-                        request,
+                    appDelegate?.currentAuthorizationFlow = OIDAuthState.authState(
+                        byPresenting: request,
                         externalUserAgent: agent
                     ) { state, error in
                         if let state {
