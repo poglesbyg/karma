@@ -1,9 +1,9 @@
 import Foundation
 
 // MARK: - Gmail configuration
-// TODO: Fill these in from the Google Cloud Console → APIs & Services → Credentials
+
 enum GmailConfig {
-    static let clientID = "YOUR_CLIENT_ID.apps.googleusercontent.com"
+    // Redirect URI is fixed — matches CFBundleURLSchemes in Info.plist
     static let redirectURI = "com.yourapp.karma:/oauth2callback"
 }
 

@@ -3,6 +3,7 @@ import AppKit
 
 struct DigestView: View {
     @EnvironmentObject var controller: StatusBarController
+    @State private var clientIDInput = ""
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -41,8 +42,10 @@ struct DigestView: View {
 
     @ViewBuilder
     private var contentArea: some View {
-        if controller.authState == nil {
-            firstRunView
+        if controller.clientID == nil {
+            setupView
+        } else if controller.authState == nil {
+            connectView
         } else if let digest = controller.lastDigest {
             digestContent(digest)
         } else {
@@ -50,15 +53,42 @@ struct DigestView: View {
         }
     }
 
-    // MARK: - First run (no auth)
+    // MARK: - Setup (no Client ID yet)
 
-    private var firstRunView: some View {
+    private var setupView: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("Enter your Google OAuth Client ID.")
+                .foregroundColor(.secondary)
+            Text("GCP Console → APIs & Services → Credentials → OAuth 2.0 Client IDs")
+                .foregroundColor(.secondary)
+                .font(.system(.caption, design: .monospaced))
+            TextField("xxx.apps.googleusercontent.com", text: $clientIDInput)
+                .textFieldStyle(.roundedBorder)
+                .font(.system(.caption, design: .monospaced))
+            Button("Save") {
+                controller.saveClientID(clientIDInput)
+            }
+            .disabled(clientIDInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+        }
+        .padding(12)
+    }
+
+    // MARK: - Connect (Client ID set, no auth)
+
+    private var connectView: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("Connect Gmail to start your digest.")
                 .foregroundColor(.secondary)
             Button("Connect Gmail") {
                 controller.startOAuthFlow()
             }
+            Button("Change Client ID") {
+                clientIDInput = ""
+                controller.clearClientID()
+            }
+            .foregroundColor(.secondary)
+            .font(.system(.caption, design: .monospaced))
+            .buttonStyle(.plain)
         }
         .padding(12)
     }
